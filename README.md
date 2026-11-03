@@ -1,310 +1,448 @@
-# 🛒 ShopEase – E-Commerce Web Application
+# ShopEase – Full-Stack E-Commerce Web Application
 
-A modern, responsive e-commerce web application designed to provide a seamless online shopping experience with product discovery, shopping cart management, and secure user interactions.
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-API-000000?logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
 
-![React](https://img.shields.io/badge/React-18.x-blue?logo=react)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript)
-![Node.js](https://img.shields.io/badge/Node.js-Backend-green?logo=node.js)
-![Express](https://img.shields.io/badge/Express.js-Framework-black?logo=express)
-![MongoDB](https://img.shields.io/badge/MongoDB-Database-green?logo=mongodb)
+## Overview
 
-## 📌 Project Overview
+ShopEase is a full-stack e-commerce web application developed using React.js, Node.js, Express.js, and MongoDB. It provides product browsing, search, category filtering, product details, shopping cart management, user authentication, and an administrative dashboard.
 
-ShopEase is a full-stack e-commerce application designed to simplify online shopping through an intuitive and responsive interface.
+The application follows a frontend-backend architecture. The React frontend communicates with REST APIs developed using Express.js, while MongoDB stores user, product, and order information.
 
-The application focuses on essential e-commerce operations, including product browsing, product details, cart management, customer authentication, and order processing.
+The project also includes JWT-based authentication, role-based authorization, password hashing, product reviews, inventory checks, and administrative sales analytics.
 
-The project demonstrates frontend development using ReactJS, backend development using Node.js and Express.js, and database integration using MongoDB.
+## Key Features
 
-## 🎯 Project Objectives
+### Customer Features
+- Browse available products.
+- Search products by name.
+- Filter products by category.
+- View product descriptions, prices, ratings, and stock availability.
+- View individual product details.
+- Add products to a shopping cart.
+- Store cart items in browser local storage.
+- Sign in using email and password.
+- View product reviews through the backend API.
+- Access customer order-related API functionality.
 
-- Develop a responsive e-commerce interface.
-- Implement reusable React components.
-- Build RESTful APIs for application operations.
-- Manage product and customer information.
-- Implement shopping cart functionality.
-- Understand frontend-backend communication.
-- Apply modular software development practices.
+### Authentication and Authorization
+- User registration and login REST APIs.
+- JWT-based authentication.
+- Password hashing using bcryptjs.
+- Customer and administrator roles.
+- Protected backend routes.
+- Role-based access control for administrative operations.
 
-## ✨ Key Features
+### Product Management
+- Create, update, and delete products through admin APIs.
+- Retrieve product information.
+- Search products by name.
+- Filter products by category.
+- Sort products by price and rating.
+- Support pagination.
+- Maintain product stock information.
+- Submit customer reviews through an authenticated API.
 
-### 1. User Authentication
-- User registration and login.
-- Password validation.
-- Authentication using JWT, if implemented.
-- Protected routes, if implemented.
+### Order Management
+- Create orders through the backend API.
+- Validate product availability before order creation.
+- Update product stock when an order is created.
+- Retrieve a customer's orders.
+- Retrieve individual order details.
+- Maintain order status information.
+- Support mock payment-result data.
 
-### 2. Product Management
-- Display available products.
-- Product details and descriptions.
-- Product categorization.
-- Search and filtering.
-- Product availability information.
+### Admin Dashboard
+- View total registered customers.
+- View total products.
+- View total orders.
+- View total sales from orders marked as paid.
+- Access administrative analytics through a protected API.
+- Manage products and orders through backend endpoints.
 
-### 3. Shopping Cart
-- Add products to the cart.
-- Update product quantities.
-- Remove products.
-- Calculate cart totals.
+## Technology Stack
 
-### 4. Order Management
-- Checkout workflow.
-- Order summary.
-- Order history.
-- Order status tracking, if implemented.
-
-### 5. Responsive User Interface
-- Reusable React components.
-- Mobile-friendly layouts.
-- Responsive navigation.
-- User-friendly product cards.
-
-## 🛠️ Technology Stack
-
-| Technology | Purpose |
+| Category | Technologies |
 |---|---|
-| ReactJS | Frontend development |
-| JavaScript ES6+ | Application logic |
-| HTML5 | Web structure |
-| CSS3 | Styling and responsive design |
-| Node.js | Backend runtime |
-| Express.js | REST API development |
-| MongoDB | Database |
-| JWT | Authentication, if implemented |
-| Git | Version control |
-| GitHub | Source code management |
-| Postman | API testing |
+| Frontend | React.js 18 |
+| Programming Language | JavaScript |
+| UI Routing | React Router DOM |
+| HTTP Client | Axios |
+| Icons | Lucide React |
+| State Management | React Hooks |
+| Backend | Node.js, Express.js |
+| Database | MongoDB |
+| ODM | Mongoose |
+| Authentication | JSON Web Token (JWT) |
+| Password Security | bcryptjs |
+| Configuration | dotenv |
+| API Testing | Jest, Supertest |
 
-## 🏗️ System Architecture
+## Application Architecture
 
-The application follows a client-server architecture.
+ShopEase follows a client-server architecture.
 
 ```mermaid
 flowchart TD
-    A[Customer] --> B[React Frontend]
-    B --> C[API Service Layer]
-    C --> D[Express.js Server]
+    A[User] --> B[React.js Frontend]
+    B --> C[Axios HTTP Requests]
+    C --> D[Express.js REST API]
     D --> E[Authentication Middleware]
-    D --> F[Business Logic]
-    F --> G[MongoDB Database]
-    G --> F
-    F --> D
-    D --> C
-    C --> B
+    D --> F[API Routes]
+    F --> G[Mongoose Models]
+    G --> H[(MongoDB Database)]
+    F --> I[JSON API Responses]
+    I --> B
 ```
 
-## 📂 Project Structure
+### Frontend
+The React application provides the user interface and handles page navigation, product display, login, and shopping cart interactions.
+
+### Backend
+The Express.js application exposes REST API endpoints for authentication, products, orders, and administrative operations.
+
+### Database
+MongoDB stores application data using Mongoose schemas and models.
+
+## Project Structure
 
 ```text
-ShopEase/
+ShopEase-Ecommerce-Web/
 │
 ├── frontend/
 │   ├── public/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── services/
-│       ├── hooks/
-│       ├── context/
-│       ├── assets/
-│       ├── App.jsx
-│       └── main.jsx
+│   │   └── index.html
+│   │
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Home.js
+│   │   │   ├── ProductDetail.js
+│   │   │   ├── Cart.js
+│   │   │   ├── Login.js
+│   │   │   └── AdminDashboard.js
+│   │   │
+│   │   ├── App.js
+│   │   └── index.css
+│   │
+│   └── package.json
 │
 ├── backend/
-│   ├── config/
-│   ├── controllers/
 │   ├── middleware/
+│   │   └── auth.js
+│   │
 │   ├── models/
+│   │   ├── User.js
+│   │   ├── Product.js
+│   │   └── Order.js
+│   │
 │   ├── routes/
-│   ├── services/
-│   └── server.js
-│
-├── assets/
-│   └── screenshots/
+│   │   ├── auth.js
+│   │   ├── products.js
+│   │   ├── orders.js
+│   │   └── admin.js
+│   │
+│   ├── tests/
+│   │   └── api.test.js
+│   │
+│   ├── server.js
+│   ├── seed.js
+│   └── package.json
 │
 ├── .env.example
 ├── .gitignore
 └── README.md
 ```
 
-## 🔄 Application Workflow
+## Database Design
 
-1. Customer opens the application.
-2. React renders the homepage.
-3. Product information is retrieved from the API.
-4. Backend processes requests.
-5. MongoDB stores and retrieves application data.
-6. Customer selects products.
-7. Shopping cart state is updated.
-8. Customer proceeds through checkout.
+The application uses MongoDB with three primary Mongoose models.
 
-## 🔌 REST API Documentation
+### 1. User Model
 
-Document the actual endpoints implemented in your backend.
+Stores customer and administrator account information.
 
-| HTTP Method | Endpoint | Description |
-|---|---|---|
-| POST | /api/auth/register | Register user |
-| POST | /api/auth/login | Authenticate user |
-| GET | /api/products | Retrieve products |
-| GET | /api/products/:id | Retrieve product details |
-| POST | /api/cart | Add cart item |
-| GET | /api/cart | Retrieve cart |
-| POST | /api/orders | Create order |
+| Field | Description |
+|---|---|
+| name | User's name |
+| email | Unique email address |
+| password | Hashed password |
+| role | Customer or admin |
+| addresses | User address information |
+| timestamps | Creation and update timestamps |
 
-## 🗄️ Database Design
+### 2. Product Model
 
-Potential database collections:
+Stores product information and customer reviews.
 
-**Users**
-- User ID
-- Name
-- Email
-- Password hash
-- Role
+| Field | Description |
+|---|---|
+| name | Product name |
+| description | Product description |
+| price | Product price |
+| category | Product category |
+| stock | Available stock |
+| imageUrl | Product image URL |
+| rating | Average product rating |
+| numReviews | Number of reviews |
+| reviews | Customer review information |
 
-**Products**
-- Product ID
-- Product name
-- Description
-- Price
-- Category
-- Image
+### 3. Order Model
 
-**Orders**
-- Order ID
-- Customer ID
-- Products
-- Total amount
-- Order status
+Stores order details, shipping information, and payment-result data.
 
-Use the actual schema implemented in your application.
+| Field | Description |
+|---|---|
+| user | Reference to the customer |
+| orderItems | Products included in the order |
+| shippingAddress | Delivery address |
+| paymentMethod | Payment method description |
+| paymentResult | Mock payment-result information |
+| totalPrice | Order total |
+| isPaid | Payment status |
+| paidAt | Payment timestamp |
+| status | Order processing status |
 
-## 🧠 Design Patterns and Engineering Concepts
+## REST API Documentation
 
-- Component-Based Architecture – reusable React components.
-- MVC – if the backend separates models, controllers, and routes.
-- Service Layer – if business operations are separated from controllers.
-- Repository Pattern – if database access is abstracted through repositories.
-- Separation of Concerns – keeping UI, business logic, and data access organized.
-- DRY Principle – avoiding unnecessary code duplication.
+The backend exposes the following REST API endpoints.
 
-## 📸 Application Screenshots
+### Authentication APIs
 
-Add actual application screenshots here.
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| POST | `/api/auth/register` | Register a customer | Public |
+| POST | `/api/auth/login` | Authenticate a user | Public |
 
-```text
-assets/screenshots/
-├── homepage.png
-├── product-list.png
-├── product-details.png
-├── shopping-cart.png
-└── checkout.png
-```
+### Product APIs
+
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| GET | `/api/products` | Retrieve products | Public |
+| GET | `/api/products/:id` | Retrieve product details | Public |
+| POST | `/api/products/:id/reviews` | Submit a product review | Authenticated |
+
+Product listing supports category filtering, name search, sorting, and pagination through query parameters.
 
 Example:
 
-![ShopEase Homepage](assets/screenshots/homepage.png)
+```http
+GET /api/products?category=Electronics&sort=price_asc&page=1&limit=10
+```
 
-## ⚙️ Installation and Setup
+### Order APIs
+
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| POST | `/api/orders` | Create an order | Authenticated |
+| GET | `/api/orders/myorders` | Retrieve the logged-in user's orders | Authenticated |
+| GET | `/api/orders/:id` | Retrieve order details | Authenticated |
+
+### Admin APIs
+
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| GET | `/api/admin/analytics` | Retrieve store analytics | Admin |
+| POST | `/api/admin/products` | Create a product | Admin |
+| PUT | `/api/admin/products/:id` | Update a product | Admin |
+| DELETE | `/api/admin/products/:id` | Delete a product | Admin |
+| GET | `/api/admin/orders` | Retrieve all orders | Admin |
+| PUT | `/api/admin/orders/:id/status` | Update order status | Admin |
+
+### Health Check
+
+```http
+GET /api/health
+```
+
+Returns the backend service status and timestamp.
+
+## Authentication Workflow
+
+```mermaid
+flowchart TD
+    A[User Login] --> B[Submit Email and Password]
+    B --> C[Express Authentication API]
+    C --> D[Find User in MongoDB]
+    D --> E[Compare Password with bcrypt]
+    E --> F{Credentials Valid?}
+    F -->|No| G[Return 401 Unauthorized]
+    F -->|Yes| H[Generate JWT]
+    H --> I[Return Token and User Details]
+    I --> J[Frontend Stores Login Information]
+    J --> K[Protected API Request]
+    K --> L[JWT Middleware Verification]
+    L --> M[Allow or Deny Access]
+```
+
+The authentication system uses JSON Web Tokens to identify authenticated users. Passwords are hashed before being stored in MongoDB. Administrative endpoints additionally check the user's role before allowing access.
+
+## Installation and Setup
 
 ### Prerequisites
 
-- Node.js
-- npm
-- MongoDB
-- Git
+Install the following software before running the application:
 
-### Clone Repository
+- Node.js and npm
+- MongoDB Community Server or MongoDB Atlas
+- Git
+- Visual Studio Code or another code editor
+
+### Step 1: Clone the Repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
-cd ShopEase
+git clone https://github.com/YOUR-USERNAME/ShopEase-Ecommerce-Web.git
+cd ShopEase-Ecommerce-Web
 ```
 
-### Backend Setup
+Replace `YOUR-USERNAME` with your GitHub username.
+
+### Step 2: Configure the Backend
 
 ```bash
 cd backend
 npm install
 ```
 
-Configure environment variables in `.env`.
+Create a `.env` file inside the `backend` folder:
 
 ```env
 PORT=5000
-MONGODB_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
+MONGODB_URI=mongodb://localhost:27017/shopease
+JWT_SECRET=replace_with_a_long_random_secret
+NODE_ENV=development
 ```
 
-### Start Backend
+Make sure MongoDB is running before starting the backend.
+
+### Step 3: Seed the Database
+
+From the `backend` directory, run:
 
 ```bash
-npm run dev
+npm run seed
 ```
 
-### Frontend Setup
+The seed script creates sample products and two sample accounts.
+
+**Important:** The current seed script deletes existing users and products before inserting its sample data. Do not run it against a database containing data you need to preserve.
+
+Sample accounts created by the seed script:
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@shopease.com` | `AdminPass123!` |
+| Customer | `john@example.com` | `CustomerPass123!` |
+
+These are development credentials only. Change or remove them before deploying the application.
+
+### Step 4: Start the Backend
+
+```bash
+npm start
+```
+
+The backend runs at:
+
+```text
+http://localhost:5000
+```
+
+### Step 5: Start the Frontend
+
+Open another terminal:
 
 ```bash
 cd frontend
 npm install
-npm run dev
+npm start
 ```
 
-Use the actual scripts and environment variable names from your project.
+The React application runs at:
 
-## 🧪 Testing
+```text
+http://localhost:3000
+```
 
-Testing areas:
+The frontend currently uses `http://localhost:5000` directly for backend API requests.
 
-- User authentication.
-- Product retrieval.
-- Shopping cart operations.
-- API response validation.
-- Form validation.
-- Error handling.
-- Responsive UI testing.
+## Testing
 
-Document the testing framework and results actually used.
+The backend includes Jest and Supertest for API testing.
 
-## 🔐 Security Considerations
+Run the backend tests from the `backend` directory:
 
-- Password hashing.
-- JWT-based authentication, if implemented.
-- Input validation.
+```bash
+npm test
+```
+
+The existing API test file covers:
+- Successful customer registration.
+- Login rejection when an incorrect password is supplied.
+
+The test setup connects to a separate MongoDB database named `shopease_test` by default. Ensure that MongoDB is running before executing the tests.
+
+## Security Considerations
+
+The project includes several basic security mechanisms:
+
+- Password hashing with bcryptjs.
+- JWT-based authentication.
 - Protected API routes.
-- Environment variable management.
-- Error handling.
+- Role-based authorization for administrator operations.
+- Mongoose schema validation for defined fields.
 
-## 🚀 Future Enhancements
+**Before production deployment:**
+- Use a strong, private JWT secret stored in environment variables.
+- Remove hardcoded fallback secrets from the application.
+- Add request validation and stronger input sanitization.
+- Configure CORS for trusted frontend origins.
+- Add rate limiting and additional authentication protections.
+- Review order pricing and inventory updates on the server.
+- Integrate a real payment provider before accepting actual payments.
 
-- Payment gateway integration.
-- Wishlist functionality.
-- Product reviews and ratings.
-- Admin analytics dashboard.
-- Email order notifications.
-- Product recommendation system.
-- Automated testing.
+## Current Implementation Notes
 
-## 💼 Skills Demonstrated
+This documentation reflects the source code included in the uploaded project.
 
-- JavaScript ES6+
-- ReactJS
-- Node.js
-- Express.js
-- REST API Development
-- MongoDB
-- HTML5 and CSS3
-- Authentication
-- CRUD Operations
-- Git and GitHub
-- Responsive Web Development
-- Software Architecture
+- The shopping cart currently uses browser `localStorage`.
+- The frontend checkout button currently displays a mock order-success message; it does not submit an order to the backend.
+- The backend order API creates mock payment-result data and marks an order as paid. It does not connect to a real payment gateway.
+- Product reviews and order operations are available through backend APIs, but corresponding complete customer-facing frontend workflows are not present in the inspected pages.
+- The admin dashboard displays analytics. Product and order administration are implemented as backend APIs rather than complete management screens in the inspected frontend.
+- Redux Toolkit is listed as a frontend dependency but is not used in the inspected source files.
 
-## 👨‍💻 Project Highlights for Recruiters
+## Future Enhancements
 
-ShopEase demonstrates full-stack web development concepts through an e-commerce application. It provides an opportunity to evaluate frontend component development, API integration, database operations, authentication, and application architecture.
+Potential improvements for future versions include:
 
-## 📄 License
+- Connect the frontend checkout flow to the backend order API.
+- Integrate a real payment gateway.
+- Add a complete registration page.
+- Add quantity controls and item removal in the shopping cart.
+- Build customer-facing order history and tracking pages.
+- Add product and order management screens to the admin dashboard.
+- Improve frontend error handling and loading states.
+- Add more comprehensive unit and integration tests.
+- Deploy the application using cloud hosting services.
 
-Specify the license included in the repository.
+## Skills Demonstrated
+
+- Full-stack web application development
+- React.js component development
+- JavaScript programming
+- REST API development
+- Node.js and Express.js
+- MongoDB database integration
+- Mongoose schemas and models
+- JWT authentication and authorization
+- Password hashing
+- CRUD operations
+- API testing with Jest and Supertest
+- Frontend and backend integration
+
+## License
+
+This project is distributed under the MIT License.
